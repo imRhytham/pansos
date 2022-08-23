@@ -5,6 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 const port = process.env.PORT || 8080;
 const connectDB = require('./config/connectDB');
+const authRoutes = require('./routes/authRoutes');
 
 //app config
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //import routes
+app.use('/api', authRoutes); //authentication
 
 //start server
 const start = async () => {
